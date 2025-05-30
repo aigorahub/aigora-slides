@@ -1,0 +1,72 @@
+---
+layout: layout.njk
+title: About Aigora
+---
+
+<!-- Simple Page Header -->
+<header class="bg-white shadow-aigora">
+  <div class="max-w-5xl mx-auto px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <a href="/" class='text-2xl font-header text-darkText flex items-center gap-2 hover:text-sage transition-colors'>
+        <img src="/assets/aigora-icon.png" alt="Aigora logo" class="h-6">
+        Aigora
+      </a>
+      <a href="/" class="text-darkText hover:text-sage transition-colors">← Back to Home</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Content -->
+<main class="py-16">
+  <div class="max-w-3xl mx-auto px-6">
+    <h1 class="text-5xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8 animate-fadeInUp">
+      About Aigora
+    </h1>
+    
+    <div class="prose prose-lg max-w-none">
+      <p class="text-xl text-darkText leading-relaxed mb-6">
+        This is an example page showing how to create new pages using the Aigora design system template.
+      </p>
+      
+      <div class="bg-white p-8 rounded-3xl shadow-aigora mb-8">
+        <h2 class="text-3xl font-header text-darkText mb-4">Using This Template</h2>
+        <p class="text-darkText mb-4">
+          To create a new page, simply add a new <code class="bg-fog px-2 py-1 rounded">.njk</code> file in the 
+          <code class="bg-fog px-2 py-1 rounded">src</code> directory with the following frontmatter:
+        </p>
+        <pre class="bg-charcoal text-white p-4 rounded-xl overflow-x-auto"><code>---
+layout: layout.njk
+title: Your Page Title
+---</code></pre>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-fog p-6 rounded-3xl">
+          <h3 class="text-xl font-header text-darkText mb-3">Design Principles</h3>
+          <ul class="space-y-2 text-darkText">
+            <li>✨ Sophisticated aesthetics</li>
+            <li>🎯 Functional clarity</li>
+            <li>🌊 Smooth transitions</li>
+            <li>📱 Responsive design</li>
+          </ul>
+        </div>
+        
+        <div class="bg-fog p-6 rounded-3xl">
+          <h3 class="text-xl font-header text-darkText mb-3">Key Features</h3>
+          <ul class="space-y-2 text-darkText">
+            <li>🎨 Complete design system</li>
+            <li>⚡ Fast build times</li>
+            <li>🔧 Easy customization</li>
+            <li>♿ Accessibility focused</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <a href="/" class="bg-sage text-white px-8 py-3 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-sage transition-all inline-block">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+</main> 

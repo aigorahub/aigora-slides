@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400&display=swap');
+}
+
+@layer utilities {
+
+    /* Squircle utility */
+    .squircle {
+        clip-path: path("M0.5,0.0 C0.776,0.0 1.0,0.224 1.0,0.5 C1.0,0.776 0.776,1.0 0.5,1.0 C0.224,1.0 0.0,0.776 0.0,0.5 C0.0,0.224 0.224,0.0 0.5,0.0 Z");
+    }
+
+    /* Aigora shadow system */
+    .shadow-aigora {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .shadow-aigora-hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Focus glow */
+    .focus-glow-sage:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(95, 185, 106, 0.4);
+    }
+
+    .focus-glow-lavender:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(169, 134, 196, 0.4);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeInUp {
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .animate-fadeInUp {
+            animation: none;
+        }
+    }
+
+    /* Hover lift effect */
+    .hover-lift {
+        transition: all 0.2s ease-out;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Dynamic border radius */
+    .hover-radius {
+        transition: border-radius 0.2s ease-out;
+    }
+
+    .hover-radius-sm:hover {
+        border-radius: calc(var(--radius) + 4px);
+    }
+
+    .hover-radius-lg:hover {
+        border-radius: calc(var(--radius) + 8px);
+    }
+}

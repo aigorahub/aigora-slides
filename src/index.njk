@@ -1,0 +1,196 @@
+---
+layout: layout.njk
+title: Aigora Design System
+---
+
+<!-- Header -->
+<header class="bg-white shadow-aigora sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <h1 class='text-2xl font-header text-darkText flex items-center gap-2'>
+        <img src="/assets/aigora-icon.png" alt="Aigora logo" class="h-6">
+        Aigora Design System
+      </h1>
+      <div class="flex gap-6">
+        <a href="#typography" class="text-darkText hover:text-sage transition-colors">Typography</a>
+        <a href="#colors" class="text-darkText hover:text-sage transition-colors">Colors</a>
+        <a href="#components" class="text-darkText hover:text-sage transition-colors">Components</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="py-16 animate-fadeInUp">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h1 class="text-6xl font-header text-darkText mb-6 decoration-sage underline decoration-2 underline-offset-8">
+      Welcome to Aigora
+    </h1>
+    <p class="text-xl text-darkText leading-relaxed mb-8">
+      A sophisticated design system for creating premium digital experiences with Eleventy, Tailwind CSS, and DaisyUI.
+    </p>
+    <div class="flex gap-4 justify-center">
+      <button class="bg-sage text-white px-8 py-3 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-sage transition-all">
+        Get Started
+      </button>
+      <button class="bg-white text-sage border-2 border-sage px-8 py-3 rounded-xl hover:bg-sage hover:text-white transition-all">
+        Learn More
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Typography Section -->
+<section id="typography" class="py-16 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
+      Typography System
+    </h2>
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-4">
+        <h3 class="text-2xl font-header text-darkText">Headers (Cormorant SC)</h3>
+        <h1 class="text-5xl font-header">Heading 1</h1>
+        <h2 class="text-4xl font-header">Heading 2</h2>
+        <h3 class="text-3xl font-header">Heading 3</h3>
+        <h4 class="text-2xl font-header">Heading 4</h4>
+      </div>
+      
+      <div class="space-y-4">
+        <h3 class="text-2xl font-header text-darkText">Body Text (Roboto)</h3>
+        <p class="text-base leading-relaxed">
+          Regular body text with generous line-height for optimal readability. The quick brown fox jumps over the lazy dog.
+        </p>
+        <p class="text-base font-bold">
+          Bold text for emphasis and important information.
+        </p>
+        <p class="text-sm font-meta text-grayMeta">
+          Meta text using Roboto Condensed for captions and supplementary content.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Color Palette -->
+<section id="colors" class="py-16 bg-fog">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
+      Color Palette
+    </h2>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+        <div class="w-full h-24 bg-sage rounded-2xl mb-4"></div>
+        <h4 class="font-bold">Modern Sage</h4>
+        <p class="text-sm text-grayMeta">#5FB96A</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+        <div class="w-full h-24 bg-lavender rounded-2xl mb-4"></div>
+        <h4 class="font-bold">Infra Lavender</h4>
+        <p class="text-sm text-grayMeta">#A986C4</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+        <div class="w-full h-24 bg-fog rounded-2xl mb-4 border"></div>
+        <h4 class="font-bold">Soft Fog</h4>
+        <p class="text-sm text-grayMeta">#EDEDED</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+        <div class="w-full h-24 bg-charcoal rounded-2xl mb-4"></div>
+        <h4 class="font-bold">Deep Charcoal</h4>
+        <p class="text-sm text-grayMeta">#1A1A1A</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Components Section -->
+<section id="components" class="py-16 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
+      Components
+    </h2>
+    
+    <!-- Buttons -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-header text-darkText mb-6">Buttons</h3>
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-sage text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-sage transition-all">
+          Primary Button
+        </button>
+        <button class="bg-lavender text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-lavender transition-all">
+          Secondary Button
+        </button>
+        <button class="bg-white text-sage border-2 border-sage px-6 py-2.5 rounded-xl hover:bg-sage hover:text-white transition-all">
+          Outline Button
+        </button>
+        <button class="bg-errorRed text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift transition-all">
+          Danger Button
+        </button>
+      </div>
+    </div>
+    
+    <!-- Cards -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-header text-darkText mb-6">Cards</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-fog p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+          <h4 class="text-xl font-header text-darkText mb-3">Card Title</h4>
+          <p class="text-grayMeta mb-4">This is a sample card component with Aigora styling.</p>
+          <button class="text-sage font-bold hover:underline">Learn More →</button>
+        </div>
+        
+        <div class="bg-white border border-gray-200 p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
+          <h4 class="text-xl font-header text-darkText mb-3">Featured Card</h4>
+          <p class="text-darkText mb-4">Cards can have different backgrounds and borders.</p>
+          <button class="bg-sage text-white px-4 py-2 rounded-xl hover:rounded-2xl transition-all">
+            Action
+          </button>
+        </div>
+        
+        <div class="bg-gradient-to-br from-sage to-lavender p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all text-white">
+          <h4 class="text-xl font-header mb-3">Gradient Card</h4>
+          <p class="mb-4 opacity-90">Premium cards with gradient backgrounds.</p>
+          <button class="bg-white text-darkText px-4 py-2 rounded-xl hover:rounded-2xl transition-all">
+            Explore
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Form Elements -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-header text-darkText mb-6">Form Elements</h3>
+      <div class="max-w-md space-y-4">
+        <div>
+          <label class="block text-sm font-bold text-darkText mb-2">Text Input</label>
+          <input type="text" placeholder="Enter your name" class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-bold text-darkText mb-2">Select</label>
+          <select class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-bold text-darkText mb-2">Textarea</label>
+          <textarea placeholder="Enter your message" rows="3" class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-charcoal text-white py-8">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <p class="text-softGray">© 2024 Aigora. Built with Eleventy, Tailwind CSS, and DaisyUI.</p>
+  </div>
+</footer>
