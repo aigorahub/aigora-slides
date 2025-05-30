@@ -1,196 +1,179 @@
 ---
 layout: layout.njk
-title: Aigora Design System
+title: Aigora Slides
 ---
 
-<!-- Header -->
-<header class="bg-white shadow-aigora sticky top-0 z-50">
-  <div class="max-w-5xl mx-auto px-6 py-4">
-    <nav class="flex items-center justify-between">
-      <h1 class='text-2xl font-header text-darkText flex items-center gap-2'>
-        <img src="/assets/aigora-icon.png" alt="Aigora logo" class="h-6">
-        Aigora Design System
-      </h1>
-      <div class="flex gap-6">
-        <a href="#typography" class="text-darkText hover:text-sage transition-colors">Typography</a>
-        <a href="#colors" class="text-darkText hover:text-sage transition-colors">Colors</a>
-        <a href="#components" class="text-darkText hover:text-sage transition-colors">Components</a>
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <header class="bg-white dark:bg-slate shadow-aigora rounded-2xl p-8 mb-8 animate-fadeInUp">
+    <div class="mb-6">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="/assets/aigora-icon.png" alt="Aigora" style="width: 48px;">
+        <h1 class="text-5xl font-header text-darkText dark:text-white">Aigora Slides</h1>
       </div>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="py-16 animate-fadeInUp">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <h1 class="text-6xl font-header text-darkText mb-6 decoration-sage underline decoration-2 underline-offset-8">
-      Welcome to Aigora
-    </h1>
-    <p class="text-xl text-darkText leading-relaxed mb-8">
-      A sophisticated design system for creating premium digital experiences with Eleventy, Tailwind CSS, and DaisyUI.
-    </p>
-    <div class="flex gap-4 justify-center">
-      <button class="bg-sage text-white px-8 py-3 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-sage transition-all">
-        Get Started
-      </button>
-      <button class="bg-white text-sage border-2 border-sage px-8 py-3 rounded-xl hover:bg-sage hover:text-white transition-all">
-        Learn More
-      </button>
+      <p class="text-xl text-grayMeta dark:text-softGray font-meta">Beautiful presentations powered by Eleventy + Reveal.js</p>
     </div>
-  </div>
-</section>
-
-<!-- Typography Section -->
-<section id="typography" class="py-16 bg-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
-      Typography System
-    </h2>
     
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🎨</span>
+        <div>
+          <h3 class="font-bold text-darkText dark:text-white">Aigora Design System</h3>
+          <p class="text-sm text-grayMeta dark:text-softGray">Premium, sophisticated styling</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">⚡</span>
+        <div>
+          <h3 class="font-bold text-darkText dark:text-white">Lightning Fast</h3>
+          <p class="text-sm text-grayMeta dark:text-softGray">Static site generation with Eleventy</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">📱</span>
+        <div>
+          <h3 class="font-bold text-darkText dark:text-white">Responsive</h3>
+          <p class="text-sm text-grayMeta dark:text-softGray">Beautiful on any device</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Available Presentations -->
+  <section class="bg-white dark:bg-slate shadow-aigora rounded-2xl p-8 mb-8 animate-fadeInUp" style="animation-delay: 0.1s;">
+    <h2 class="text-3xl font-header text-darkText dark:text-white mb-6 border-b-2 border-sage pb-2">Available Presentations</h2>
+    
+    <div class="grid gap-4">
+      {% for slide in collections.slides %}
+      <a href="{{ slide.url }}" class="block group">
+        <div class="card hover-lift p-6 transition-all duration-200 border-2 border-transparent hover:border-sage">
+          <h3 class="text-xl font-header text-darkText dark:text-white group-hover:text-sage transition-colors">
+            {{ slide.data.title or slide.fileSlug }}
+          </h3>
+          <p class="text-grayMeta dark:text-softGray mt-2">{{ slide.url }}</p>
+          <div class="mt-4 flex items-center gap-2 text-sm">
+            <span class="bg-sage/10 text-sage px-3 py-1 rounded-full">View Slides →</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+      
+      {% if collections.slides.length == 0 %}
+      <div class="text-center py-12 text-grayMeta dark:text-softGray">
+        <p class="text-lg mb-4">No presentations found.</p>
+        <p>Create your first presentation by adding a `.md` file to the `src/slides/` directory.</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Quick Start Guide -->
+  <section class="bg-white dark:bg-slate shadow-aigora rounded-2xl p-8 mb-8 animate-fadeInUp" style="animation-delay: 0.2s;">
+    <h2 class="text-3xl font-header text-darkText dark:text-white mb-6 border-b-2 border-sage pb-2">Quick Start</h2>
+    
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-bold text-darkText dark:text-white mb-3">1. Create a New Presentation</h3>
+        <p class="text-grayMeta dark:text-softGray mb-3">Add a new markdown file to <code class="bg-sage/10 px-2 py-1 rounded text-sage">src/slides/</code>:</p>
+        <pre class="bg-slate dark:bg-charcoal text-white p-4 rounded-xl overflow-x-auto"><code>---
+layout: reveal-layout.njk
+title: My Awesome Presentation
+---
+
+# Welcome Slide
+
+Your content here
+
+---
+
+## Second Slide
+
+More content with **markdown** support</code></pre>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-darkText dark:text-white mb-3">2. Slide Separators</h3>
+        <ul class="list-disc list-inside text-grayMeta dark:text-softGray space-y-2">
+          <li>Use <code class="bg-sage/10 px-2 py-1 rounded text-sage">---</code> for horizontal slides</li>
+          <li>Use <code class="bg-sage/10 px-2 py-1 rounded text-sage">--</code> for vertical slides</li>
+          <li>Add speaker notes with <code class="bg-sage/10 px-2 py-1 rounded text-sage">Note:</code></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-darkText dark:text-white mb-3">3. Keyboard Shortcuts</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-fog dark:bg-charcoal rounded-lg p-4">
+            <h4 class="font-bold text-sage mb-2">Navigation</h4>
+            <ul class="text-sm space-y-1 text-grayMeta dark:text-softGray">
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">→</kbd> Next slide</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">←</kbd> Previous slide</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">↑↓</kbd> Vertical navigation</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">ESC</kbd> Overview mode</li>
+            </ul>
+          </div>
+          <div class="bg-fog dark:bg-charcoal rounded-lg p-4">
+            <h4 class="font-bold text-sage mb-2">Features</h4>
+            <ul class="text-sm space-y-1 text-grayMeta dark:text-softGray">
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">S</kbd> Speaker notes</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">F</kbd> Fullscreen</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">T</kbd> Toggle theme</li>
+              <li><kbd class="bg-white dark:bg-slate px-2 py-1 rounded shadow-sm">?</kbd> Help</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="bg-white dark:bg-slate shadow-aigora rounded-2xl p-8 animate-fadeInUp" style="animation-delay: 0.3s;">
+    <h2 class="text-3xl font-header text-darkText dark:text-white mb-6 border-b-2 border-sage pb-2">Features</h2>
+    
+    <div class="grid md:grid-cols-2 gap-6">
       <div class="space-y-4">
-        <h3 class="text-2xl font-header text-darkText">Headers (Cormorant SC)</h3>
-        <h1 class="text-5xl font-header">Heading 1</h1>
-        <h2 class="text-4xl font-header">Heading 2</h2>
-        <h3 class="text-3xl font-header">Heading 3</h3>
-        <h4 class="text-2xl font-header">Heading 4</h4>
+        <h3 class="text-xl font-bold text-sage">Design System</h3>
+        <ul class="space-y-2 text-grayMeta dark:text-softGray">
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Beautiful Aigora theme with sage and lavender accents</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Premium typography with Cormorant SC headers</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Advanced shadow system and animations</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Light and dark theme support</span>
+          </li>
+        </ul>
       </div>
       
       <div class="space-y-4">
-        <h3 class="text-2xl font-header text-darkText">Body Text (Roboto)</h3>
-        <p class="text-base leading-relaxed">
-          Regular body text with generous line-height for optimal readability. The quick brown fox jumps over the lazy dog.
-        </p>
-        <p class="text-base font-bold">
-          Bold text for emphasis and important information.
-        </p>
-        <p class="text-sm font-meta text-grayMeta">
-          Meta text using Roboto Condensed for captions and supplementary content.
-        </p>
+        <h3 class="text-xl font-bold text-sage">Technical Features</h3>
+        <ul class="space-y-2 text-grayMeta dark:text-softGray">
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Markdown-based slide creation</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Code syntax highlighting</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>Speaker notes and presenter view</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-sage mt-1">▸</span>
+            <span>PDF export capability</span>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Color Palette -->
-<section id="colors" class="py-16 bg-fog">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
-      Color Palette
-    </h2>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-        <div class="w-full h-24 bg-sage rounded-2xl mb-4"></div>
-        <h4 class="font-bold">Modern Sage</h4>
-        <p class="text-sm text-grayMeta">#5FB96A</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-        <div class="w-full h-24 bg-lavender rounded-2xl mb-4"></div>
-        <h4 class="font-bold">Infra Lavender</h4>
-        <p class="text-sm text-grayMeta">#A986C4</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-        <div class="w-full h-24 bg-fog rounded-2xl mb-4 border"></div>
-        <h4 class="font-bold">Soft Fog</h4>
-        <p class="text-sm text-grayMeta">#EDEDED</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-        <div class="w-full h-24 bg-charcoal rounded-2xl mb-4"></div>
-        <h4 class="font-bold">Deep Charcoal</h4>
-        <p class="text-sm text-grayMeta">#1A1A1A</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Components Section -->
-<section id="components" class="py-16 bg-white">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-4xl font-header text-darkText mb-8 decoration-sage underline decoration-2 underline-offset-8">
-      Components
-    </h2>
-    
-    <!-- Buttons -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-header text-darkText mb-6">Buttons</h3>
-      <div class="flex flex-wrap gap-4">
-        <button class="bg-sage text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-sage transition-all">
-          Primary Button
-        </button>
-        <button class="bg-lavender text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift focus-glow-lavender transition-all">
-          Secondary Button
-        </button>
-        <button class="bg-white text-sage border-2 border-sage px-6 py-2.5 rounded-xl hover:bg-sage hover:text-white transition-all">
-          Outline Button
-        </button>
-        <button class="bg-errorRed text-white px-6 py-2.5 rounded-2xl hover:rounded-[20px] shadow-aigora hover:shadow-aigora-hover hover-lift transition-all">
-          Danger Button
-        </button>
-      </div>
-    </div>
-    
-    <!-- Cards -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-header text-darkText mb-6">Cards</h3>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-fog p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-          <h4 class="text-xl font-header text-darkText mb-3">Card Title</h4>
-          <p class="text-grayMeta mb-4">This is a sample card component with Aigora styling.</p>
-          <button class="text-sage font-bold hover:underline">Learn More →</button>
-        </div>
-        
-        <div class="bg-white border border-gray-200 p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all">
-          <h4 class="text-xl font-header text-darkText mb-3">Featured Card</h4>
-          <p class="text-darkText mb-4">Cards can have different backgrounds and borders.</p>
-          <button class="bg-sage text-white px-4 py-2 rounded-xl hover:rounded-2xl transition-all">
-            Action
-          </button>
-        </div>
-        
-        <div class="bg-gradient-to-br from-sage to-lavender p-6 rounded-3xl shadow-aigora hover-lift hover:shadow-aigora-hover transition-all text-white">
-          <h4 class="text-xl font-header mb-3">Gradient Card</h4>
-          <p class="mb-4 opacity-90">Premium cards with gradient backgrounds.</p>
-          <button class="bg-white text-darkText px-4 py-2 rounded-xl hover:rounded-2xl transition-all">
-            Explore
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Form Elements -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-header text-darkText mb-6">Form Elements</h3>
-      <div class="max-w-md space-y-4">
-        <div>
-          <label class="block text-sm font-bold text-darkText mb-2">Text Input</label>
-          <input type="text" placeholder="Enter your name" class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all">
-        </div>
-        
-        <div>
-          <label class="block text-sm font-bold text-darkText mb-2">Select</label>
-          <select class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        
-        <div>
-          <label class="block text-sm font-bold text-darkText mb-2">Textarea</label>
-          <textarea placeholder="Enter your message" rows="3" class="w-full px-4 py-2 rounded border border-gray-300 focus:border-sage focus-glow-sage transition-all"></textarea>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-charcoal text-white py-8">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <p class="text-softGray">© 2024 Aigora. Built with Eleventy, Tailwind CSS, and DaisyUI.</p>
-  </div>
-</footer>
+  </section>
+</div>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aigora">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or "Aigora Slides" }}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/aigora-icon.png">
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="/assets/reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="/assets/reveal.js/dist/reveal.css">
+    
+    <!-- Aigora custom styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/reveal-aigora.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle-reveal" class="bg-white dark:bg-slate p-3 rounded-full shadow-aigora hover:shadow-aigora-hover transition-all" aria-label="Toggle theme">
+            <svg class="w-6 h-6 text-darkText dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Sun icon (visible in dark mode) -->
+                <path class="hidden dark:inline" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                <!-- Moon icon (visible in light mode) -->
+                <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <div class="reveal">
+        <div class="slides">
+            {% if content %}
+                {{ content | slides | safe }}
+            {% else %}
+                <section>
+                    <h1>Welcome to Aigora Slides</h1>
+                    <p>Your content will appear here</p>
+                </section>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Reveal.js -->
+    <script src="/assets/reveal.js/dist/reveal.js"></script>
+    <script src="/assets/reveal.js/plugin/notes/notes.js"></script>
+    <script src="/assets/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="/assets/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="/assets/reveal.js/plugin/math/math.js"></script>
+    <script src="/assets/reveal.js/plugin/zoom/zoom.js"></script>
+    <script src="/assets/reveal.js/plugin/search/search.js"></script>
+    
+    <script>
+        // Apply saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const html = document.documentElement;
+        
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.classList.remove('dark');
+            html.setAttribute('data-theme', 'aigora');
+        }
+        
+        // Reveal.js configuration with Aigora design principles
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            
+            // Transition style
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            
+            // Enable plugins
+            plugins: [ 
+                RevealMarkdown, 
+                RevealHighlight, 
+                RevealNotes,
+                RevealMath,
+                RevealZoom,
+                RevealSearch
+            ],
+            
+            // Markdown configuration
+            markdown: {
+                smartypants: true,
+                breaks: true
+            },
+            
+            // Custom theme settings
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+        
+        // Theme toggle functionality
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.setAttribute('data-theme', 'aigora');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Add custom keyboard shortcuts
+        Reveal.addKeyBinding({ keyCode: 84, key: 'T', description: 'Toggle theme' }, toggleTheme);
+        
+        // Visual toggle button
+        const themeToggle = document.getElementById('theme-toggle-reveal');
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html> 

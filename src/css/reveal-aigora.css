@@ -1,0 +1,355 @@
+/* Aigora Theme for Reveal.js */
+/* Based on the Aigora Design System */
+
+:root {
+    /* Light theme colors */
+    --ag-page-bg: #EDEDED;
+    --ag-card-bg: #FFFFFF;
+    --ag-primary: #5FB96A;
+    --ag-secondary: #A986C4;
+    --ag-text-primary: #1E1E1E;
+    --ag-text-secondary: #9A9A9A;
+    --ag-error: #DB2955;
+
+    /* Dark theme colors */
+    --ag-dark-bg: #1A1A1A;
+    --ag-dark-card: #2C2C2C;
+    --ag-dark-text-primary: #E0E0E0;
+    --ag-dark-text-secondary: #C8C8C8;
+    --ag-dark-text-tertiary: #888888;
+}
+
+/* Base reveal.js overrides */
+.reveal {
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--ag-text-primary);
+    background-color: var(--ag-page-bg);
+    line-height: 1.55;
+}
+
+.reveal .slides {
+    text-align: left;
+}
+
+.reveal .slides section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px;
+}
+
+.reveal .slides section.center {
+    align-items: center;
+    text-align: center;
+}
+
+/* Typography */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    margin: 0 0 32px 0;
+    font-family: 'Cormorant SC', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-transform: none;
+    word-wrap: break-word;
+    color: var(--ag-text-primary);
+}
+
+.reveal h1 {
+    font-size: 2.5em;
+    text-decoration: none;
+}
+
+.reveal h2 {
+    font-size: 2em;
+    border-bottom: 3px solid var(--ag-primary);
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+}
+
+.reveal h3 {
+    font-size: 1.5em;
+    color: var(--ag-secondary);
+}
+
+.reveal h4 {
+    font-size: 1.25em;
+}
+
+.reveal p {
+    margin: 20px 0;
+    line-height: 1.55;
+}
+
+/* Lists */
+.reveal ul,
+.reveal ol {
+    display: inline-block;
+    text-align: left;
+    margin: 0 0 0 1em;
+}
+
+.reveal ul li,
+.reveal ol li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.reveal ul li::before {
+    content: "▸";
+    position: absolute;
+    left: -1.5em;
+    color: var(--ag-primary);
+    font-weight: bold;
+}
+
+/* Code blocks */
+.reveal pre {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    text-align: left;
+    font-size: 0.7em;
+    font-family: 'Roboto Condensed', monospace;
+    line-height: 1.4em;
+    word-wrap: break-word;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    background-color: var(--ag-card-bg);
+}
+
+.reveal code {
+    font-family: 'Roboto Condensed', monospace;
+    background-color: rgba(95, 185, 106, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--ag-primary);
+}
+
+.reveal pre code {
+    display: block;
+    padding: 20px;
+    overflow: auto;
+    max-height: 400px;
+    background-color: transparent;
+    color: var(--ag-text-primary);
+}
+
+/* Links */
+.reveal a {
+    color: var(--ag-primary);
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+    border-bottom: 2px solid transparent;
+}
+
+.reveal a:hover {
+    color: var(--ag-secondary);
+    border-bottom-color: var(--ag-secondary);
+}
+
+/* Images */
+.reveal section img {
+    margin: 15px 0px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    transition: all 0.2s ease-out;
+}
+
+.reveal section img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Tables */
+.reveal table {
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.reveal table th {
+    font-weight: bold;
+    background-color: var(--ag-primary);
+    color: white;
+    padding: 12px 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.reveal table td {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--ag-card-bg);
+}
+
+.reveal table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Blockquotes */
+.reveal blockquote {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--ag-card-bg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--ag-secondary);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+}
+
+/* Progress bar */
+.reveal .progress {
+    color: var(--ag-primary);
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.reveal .progress span {
+    background: var(--ag-primary);
+    transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* Controls */
+.reveal .controls {
+    color: var(--ag-primary);
+}
+
+.reveal .controls button:hover {
+    color: var(--ag-secondary);
+}
+
+/* Slide number */
+.reveal .slide-number {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    color: var(--ag-text-secondary);
+    background-color: transparent;
+    padding: 8px 12px;
+}
+
+/* Speaker notes */
+.reveal .speaker-notes {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+/* Custom classes */
+.reveal .highlight-sage {
+    color: var(--ag-primary);
+    font-weight: bold;
+}
+
+.reveal .highlight-lavender {
+    color: var(--ag-secondary);
+    font-weight: bold;
+}
+
+.reveal .card {
+    background: var(--ag-card-bg);
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+    transition: all 0.2s ease-out;
+}
+
+.reveal .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Dark theme */
+[data-theme="dark"] .reveal {
+    color: var(--ag-dark-text-primary);
+    background-color: var(--ag-dark-bg);
+}
+
+[data-theme="dark"] .reveal h1,
+[data-theme="dark"] .reveal h2,
+[data-theme="dark"] .reveal h3,
+[data-theme="dark"] .reveal h4,
+[data-theme="dark"] .reveal h5,
+[data-theme="dark"] .reveal h6 {
+    color: var(--ag-dark-text-primary);
+}
+
+[data-theme="dark"] .reveal pre,
+[data-theme="dark"] .reveal .card,
+[data-theme="dark"] .reveal blockquote,
+[data-theme="dark"] .reveal table td {
+    background-color: var(--ag-dark-card);
+}
+
+[data-theme="dark"] .reveal pre code {
+    color: var(--ag-dark-text-primary);
+}
+
+[data-theme="dark"] .reveal .slide-number {
+    color: var(--ag-dark-text-secondary);
+}
+
+/* Squircle utility for reveal.js */
+.reveal .squircle {
+    clip-path: path("M0.5,0.0 C0.776,0.0 1.0,0.224 1.0,0.5 C1.0,0.776 0.776,1.0 0.5,1.0 C0.224,1.0 0.0,0.776 0.0,0.5 C0.0,0.224 0.224,0.0 0.5,0.0 Z");
+}
+
+/* Media queries for responsive text */
+@media screen and (max-width: 1024px) {
+    .reveal {
+        font-size: 32px;
+    }
+
+    .reveal h1 {
+        font-size: 2em;
+    }
+
+    .reveal h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reveal {
+        font-size: 28px;
+    }
+
+    .reveal .slides section {
+        padding: 24px;
+    }
+}

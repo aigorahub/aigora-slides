@@ -1,5 +1,10 @@
 module.exports = {
-    content: ['./src/**/*.njk', './_includes/**/*.njk'],
+    darkMode: 'class',
+    content: [
+        './src/**/*.{njk,md}',
+        './_includes/**/*.njk',
+        './src/**/*.html'
+    ],
     theme: {
         extend: {
             colors: {
@@ -54,6 +59,18 @@ module.exports = {
                     "base-100": "#EDEDED",       // fog
                     "--base-content": "#1E1E1E", // darkText
                     "info": "#2C2C2C",           // slate
+                    "success": "#5FB96A",        // sage
+                    "warning": "#A986C4",        // lavender
+                    "error": "#DB2955",          // errorRed
+                },
+                dark: {
+                    "primary": "#5FB96A",        // sage (same)
+                    "secondary": "#A986C4",      // lavender (same)
+                    "accent": "#5FB96A",         // sage (same)
+                    "neutral": "#2C2C2C",        // slate
+                    "base-100": "#1A1A1A",       // charcoal
+                    "--base-content": "#E0E0E0", // light gray
+                    "info": "#3A3A3A",           // lighter slate
                     "success": "#5FB96A",        // sage
                     "warning": "#A986C4",        // lavender
                     "error": "#DB2955",          // errorRed
