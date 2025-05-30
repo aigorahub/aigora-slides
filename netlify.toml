@@ -1,10 +1,7 @@
 [build]
   command = "npm install && npm run build"
   publish = "_site" 
-  environment = { NODE_VERSION = "18" }
-
-[build.environment]
-  NODE_ENV = "production"
+  environment = { NODE_VERSION = "18", NODE_ENV = "production" }
 
 # Redirect all paths to index.html for client-side routing (if needed)
 [[redirects]]
