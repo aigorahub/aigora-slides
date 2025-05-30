@@ -1,0 +1,17 @@
+---
+layout: reveal-layout.njk
+title: "Aigora Presentation Deck"
+eleventyNavigation:
+  key: Aigora Presentation
+  order: 1
+---
+{# Populate window.slidesData for legacy component Javascript #}
+<script>
+  window.slidesData = {{ presentation_content.slides | dump | safe }};
+</script>
+
+{% for slide in presentation_content.slides %}
+<section>
+  {% include "legacy_slide_types.njk" %}
+</section>
+{% endfor %}

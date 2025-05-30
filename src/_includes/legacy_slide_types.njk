@@ -1,0 +1,195 @@
+{# Base slide structure with common styling #}
+<div class="slide flex-grow flex flex-col items-center justify-center text-center" id="slide-{{ slide.id | default(loop.index) }}">
+
+  {# Title Slide Type #}
+  {% if slide.type == "title" %}
+    <div class="title-slide-content flex flex-col items-center justify-center w-full h-full">
+      <img src="/assets/img/legacy-images/aigora-icon.png" alt="Aigora mountain logo" class="logo max-h-[12vh] w-auto mb-6"/>
+      <h1 class="headline font-header font-semibold text-core-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-4">{{ slide.title }}</h1>
+      {% if slide.subtitle %}
+        <p class="subtitle font-body text-dark-charcoal text-xl md:text-2xl lg:text-3xl max-w-xl mb-6">{{ slide.subtitle }}</p>
+      {% endif %}
+      <p class="meta font-body text-dark-charcoal text-base md:text-lg">
+        {{ slide.consultancyName | default("Aigora") }} <span class="text-modern-sage mx-1">·</span> <a href="https://www.aigora.ai" target="_blank" class="hover:underline">aigora.ai</a>
+      </p>
+    </div>
+
+  {# Text Slide Type - REVISED for single wider column text, image above title #}
+  {% elif slide.type == "text" %}
+    <div class="w-full max-w-3xl mx-auto text-left">
+      {% if slide.imageUrl %}
+        <div class="w-full h-64 md:h-72 bg-soft-fog rounded-lg shadow-md flex items-center justify-center text-cool-gray text-lg font-semibold p-4 mb-8">Visual: {{ slide.imageUrl }}</div>
+      {% else %}
+        {# Optional: Add a placeholder if no image, or just less margin for title if no image #}
+        {# <div class="w-full h-64 md:h-72 bg-gray-200 rounded-lg shadow-md flex items-center justify-center text-gray-500 text-lg font-semibold p-4 mb-8">[Image Placeholder]</div> #}
+      {% endif %}
+      <h2 class="text-4xl md:text-5xl font-header font-semibold text-core-black mb-6">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <div class="prose prose-lg font-body text-dark-charcoal max-w-none mb-6">{{ slide.content | markdown | safe }}</div>
+      {% endif %}
+    </div>
+
+  {# List Slide Type - REVISED for list prominence #}
+  {% elif slide.type == "list" %}
+    <div class="w-full flex flex-col md:flex-row items-start md:items-center justify-center gap-x-8">
+      <div class="md:w-2/3 text-left py-4"> {# List takes more width #}
+        <h2 class="text-4xl md:text-5xl font-header font-semibold text-core-black mb-6">{{ slide.title }}</h2>
+        {% if slide.items and slide.items.length > 0 %}
+          <ul class="prose prose-lg font-body text-dark-charcoal list-disc pl-5 space-y-2 max-w-none mb-6"> {# Increased space-y #}
+            {% for item in slide.items %}
+              <li class="leading-relaxed">{{ item | markdown | safe }}</li> {# Added leading-relaxed #}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="md:w-1/3 py-4 flex items-center justify-center"> {# Image takes less width #}
+        {% if slide.imageUrl %}
+          <div class="w-full h-64 md:h-80 bg-soft-fog rounded-lg shadow-md flex items-center justify-center text-cool-gray text-lg font-semibold p-4">Visual: {{ slide.imageUrl }}</div>
+        {% else %}
+          <div class="w-full h-64 md:h-80 bg-soft-fog rounded-lg shadow-md flex items-center justify-center text-cool-gray text-lg font-semibold p-4">[Image Placeholder]</div>
+        {% endif %}
+      </div>
+    </div>
+
+  {# Table Slide Type - NEW #}
+  {% elif slide.type == "table" %}
+    <div class="w-full max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-header font-semibold text-core-black mb-6 text-center">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <p class="text-lg font-body text-dark-charcoal mb-8 max-w-3xl mx-auto text-center">{{ slide.content | markdown | safe }}</p>
+      {% endif %}
+      <div class="overflow-x-auto shadow-md rounded-lg bg-theme-bg-slide border border-theme-border-slide-content">
+        <table id="interactiveTable-{{ slide.id }}" class="interactive-table min-w-full">
+          <thead> {# All classes removed #}
+            <tr> {# All classes removed #}
+              {% for header in slide.tableData.headers %}
+                <th scope="col"
+                    class="sortable-header" {# Minimal classes for JS + base styling #}
+                    data-column-index="{{ loop.index0 }}"
+                    data-sort-direction="none">
+                  {{ header }} <span class="sort-indicator"></span>
+                </th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-theme-border-slide-content">
+            {% for row in slide.tableData.rows %}
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150">
+                {% for cell in row %}
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-body text-dark-charcoal">
+                    {{ cell }}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  {# Radar Chart Slide Type #}
+  {% elif slide.type == "radar_chart" %}
+    <div class="w-full">
+      <h2 class="text-4xl md:text-5xl font-header font-semibold text-core-black mb-8">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <p class="text-lg font-body text-dark-charcoal mb-8 max-w-2xl mx-auto">{{ slide.content | markdown | safe }}</p>
+      {% endif %}
+      <div class="w-full mx-auto mb-4 max-w-2xl h-[50vh] min-h-[300px]">
+        <canvas id="radarChart-{{ slide.id }}"></canvas>
+      </div>
+    </div>
+
+  {# Word Cloud Slide Type #}
+  {% elif slide.type == "word_cloud" %}
+    <div class="w-full">
+      <h2 class="text-4xl md:text-5xl font-header font-semibold text-core-black mb-8">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <p class="text-lg font-body text-dark-charcoal mb-8 max-w-2xl mx-auto">{{ slide.content | markdown | safe }}</p>
+      {% endif %}
+      <div class="w-full max-w-xl h-[45vh] min-h-[350px] mx-auto border border-theme-border-slide-content rounded-md shadow-sm bg-theme-wordcloud-container-bg p-2 overflow-hidden flex items-center justify-center">
+        <canvas id="wordCloud-{{ slide.id }}"></canvas>
+      </div>
+    </div>
+
+  {# Predictive Tool Slide Type #}
+  {% elif slide.type == "predictive_tool" %}
+    <div id="predictiveToolContainer-{{ slide.id }}" class="w-full max-w-2xl mx-auto p-6 bg-theme-bg-slide rounded-lg shadow-xl border border-theme-border-slide-content">
+      <h2 class="text-3xl md:text-4xl font-header font-semibold text-core-black mb-8">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <p class="text-lg font-body text-dark-charcoal mb-10">{{ slide.content | markdown | safe }}</p>
+      {% endif %}
+      <div class="space-y-6">
+        <div>
+          <label for="saltiness-{{ slide.id }}" class="block text-base font-body text-dark-charcoal font-medium mb-1">Saltiness: <span id="saltinessValue-{{ slide.id }}" class="font-semibold text-modern-sage">50</span></label>
+          <input type="range" id="saltiness-{{ slide.id }}" name="saltiness" min="0" max="100" value="50">
+        </div>
+        <div>
+          <label for="crunchiness-{{ slide.id }}" class="block text-base font-body text-dark-charcoal font-medium mb-1">Crunchiness: <span id="crunchinessValue-{{ slide.id }}" class="font-semibold text-modern-sage">50</span></label>
+          <input type="range" id="crunchiness-{{ slide.id }}" name="crunchiness" min="0" max="100" value="50">
+        </div>
+        <div>
+          <p class="text-xl font-body text-dark-charcoal mt-4">Predicted Preference Score: <span id="predictionResult-{{ slide.id }}" class="font-header font-semibold text-core-black text-2xl">N/A</span></p>
+        </div>
+        <div id="predictiveToolStatus-{{ slide.id }}" class="text-sm font-body text-cool-gray min-h-[1.2em]"></div>
+      </div>
+    </div>
+
+  {# Closing Slide Type #}
+  {% elif slide.type == "closing" %}
+    <div class="w-full max-w-3xl mx-auto flex flex-col items-center justify-center h-full pt-8 pb-4">
+      <img src="/assets/img/legacy-images/aigora-icon.png" alt="Aigora mountain logo" class="logo max-h-[10vh] w-auto mb-10"/>
+      <h2 class="headline font-header font-semibold text-core-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">{{ slide.title }}</h2>
+      {% if slide.content %}
+        <p class="subtitle font-body text-dark-charcoal text-xl md:text-2xl lg:text-3xl max-w-xl mb-10">{{ slide.content | markdown | safe }}</p>
+      {% endif %}
+      {% if slide.callToAction.text and slide.callToAction.url %}
+        <a href="{{ slide.callToAction.url }}" class="btn btn-large mb-12">
+          {{ slide.callToAction.text }}
+        </a>
+      {% elif slide.callToAction and not slide.callToAction.text %}
+         <p class="text-xl font-body text-dark-charcoal mb-12">{{ slide.callToAction }}</p>
+      {% endif %}
+      <p class="meta font-body text-dark-charcoal text-base md:text-lg mt-auto">
+        <a href="https://www.aigora.ai" target="_blank" class="hover:underline">aigora.ai</a>
+      </p>
+    </div>
+
+  {# Video Slide Type #}
+  {% elif slide.type == "video" %}
+    <div class="w-full text-center">
+      <h2 class="video-slide-title text-4xl md:text-5xl font-header font-semibold text-core-black mb-8">{{ slide.title | safe }}</h2>
+      <video controls class="w-full max-w-3xl mx-auto rounded-lg shadow-lg" style="aspect-ratio: 16/9;" src="{{ slide.videoUrl }}">
+          <p>Your browser doesn't support HTML5 video. You can <a href="{{ slide.videoUrl }}">download it here</a>.</p>
+      </video>
+      {% if slide.caption %}
+        <p class="text-lg font-body text-dark-charcoal mt-6 max-w-3xl mx-auto">{{ slide.caption | markdown | safe }}</p>
+      {% endif %}
+    </div>
+
+  {# Iframe Slide Type #}
+  {% elif slide.type == "iframe" %}
+    <div class="w-full text-center"> {# Centering container #}
+      <h2 class="text-3xl md:text-4xl font-bold font-display text-aigora-sg-blue mb-4">{{ slide.title | markdown | safe }}</h2>
+      <iframe src="{{ slide.iframeUrl }}"
+              width="100%"
+              height="450px"
+              style="border:1px solid #ccc; margin-top: 1rem; margin-bottom: 1rem; display: inline-block;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+          <p>Your browser doesn't support iframes. You can <a href="{{ slide.iframeUrl }}">view the content here</a>.</p>
+      </iframe>
+      {% if slide.description %}
+        <p class="text-lg font-body text-gray-700 mt-2">{{ slide.description | markdown | safe }}</p>
+      {% endif %}
+    </div>
+
+  {# Default/Fallback for unknown slide types #}
+  {% else %}
+    <div class="w-full p-4 text-center">
+      <h2 class="text-3xl font-header font-semibold text-signal-red mb-4">Unknown Slide Type: {{ slide.type }}</h2>
+      <p class="text-xl font-body text-dark-charcoal">Title: {{ slide.title }}</p>
+      <div class="prose font-body text-dark-charcoal mx-auto mt-4">{{ slide.content | markdown | default("No content provided.") }}</div>
+    </div>
+  {% endif %}
+</div>

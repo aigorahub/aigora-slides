@@ -3,6 +3,16 @@ layout: reveal-layout.njk
 title: Your Presentation Title
 ---
 
+<!--
+NOTE: This template is for creating basic presentations using Markdown with the Aigora Reveal.js theme.
+For presentations that require advanced components, interactive elements, or complex slide layouts,
+please use the new Aigora presentation system.
+- See `src/slides/example-aigora-deck.njk` for an example presentation deck.
+- Use `src/_data/sample_presentation_deck.json` as a template for your presentation content.
+You can copy `example-aigora-deck.njk` and its corresponding data file (`sample_presentation_deck.json`, renaming it)
+to create new presentations.
+-->
+
 <!-- .slide: class="center" -->
 # Your Title Here
 ## Your Subtitle

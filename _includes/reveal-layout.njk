@@ -15,11 +15,19 @@
     <!-- Aigora custom styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/reveal-aigora.css">
+    <link rel="stylesheet" href="/assets/css/legacy-components.css">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+
+    <!-- CDN Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.3/src/wordcloud2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
     <style>
         /* Move Reveal.js progress bar to the top */
         .reveal .progress {
@@ -142,5 +150,6 @@
         const themeToggle = document.getElementById('theme-toggle-reveal');
         themeToggle.addEventListener('click', toggleTheme);
     </script>
+    <script type="module" src="/assets/js/legacy-components/main.js" defer></script>
 </body>
 </html> 

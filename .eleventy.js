@@ -11,6 +11,15 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.setLibrary("md", md);
 
+    // Nunjucks filter for Markdown
+    eleventyConfig.addNunjucksFilter("markdown", function (markdownString) {
+        if (typeof markdownString === 'string') {
+            return md.render(markdownString);
+        }
+        return ''; // Return empty string for non-string inputs
+    });
+
+
     // Custom filter to split content into slides and wrap them for Reveal.js Markdown
     eleventyConfig.addFilter("slides", function (content) {
         // Trim leading/trailing whitespace from the whole content first
@@ -29,10 +38,13 @@ module.exports = function (eleventyConfig) {
     // Passthrough copy for static assets
     eleventyConfig.addPassthroughCopy("public");
     eleventyConfig.addPassthroughCopy("assets"); // Keep original assets passthrough if needed
+    eleventyConfig.addPassthroughCopy("src/assets/js/legacy-components");
+    eleventyConfig.addPassthroughCopy("src/assets/img/legacy-images");
 
 
     // Watch our main CSS file for changes
     eleventyConfig.addWatchTarget("src/css/style.css");
+    eleventyConfig.addWatchTarget("src/css/legacy-components.css");
     eleventyConfig.addWatchTarget("src/**/*.md");
 
     // Add collection for slide decks

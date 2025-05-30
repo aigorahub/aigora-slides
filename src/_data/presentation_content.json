@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "type": "title",
+    "title": "Unlocking Sensory Insights",
+    "consultancyName": "Aigora",
+    "subtitle": "Innovative Approaches to Product Understanding"
+  },
+  {
+    "id": 5,
+    "type": "radar_chart",
+    "title": "Interactive Sensory Dashboard",
+    "content": "Compare sensory profiles of products to identify key differentiators and areas for optimization. This radar chart visualizes multi-dimensional sensory data for clear insights."
+  },
+  {
+    "id": 11,
+    "type": "video",
+    "title": "Sample Video Embed",
+    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "caption": "This is an example of an HTML5 embedded video. Controls should be visible."
+  },
+  {
+    "id": 2,
+    "type": "text",
+    "title": "Why Sensory Data Matters",
+    "content": "Sensory attributes like taste, aroma, and texture are primary drivers of consumer preference and product loyalty. Understanding these elements allows for targeted product development and enhanced market positioning, ensuring your products resonate deeply with consumers.\n\n## Detailed Insights\n\nHere are some **more details** about why it's so *important*:\n\n* Item 1\n* Item 2\n\n[Learn More](http://example.com)",
+    "imageUrl": "placeholder_sensory_overview"
+  },
+  {
+    "id": 3,
+    "type": "list",
+    "title": "Key Sensory Attributes",
+    "items": [
+      "Taste: Sweet, sour, salty, bitter, umami, and **complex flavor profiles**. [details](http://example.com)",
+      "Aroma: Volatile compounds perception, influencing flavor and appeal. *Sub-item 1* *Sub-item 2*",
+      "Texture: Mouthfeel, crispness, creaminess, smoothness impacting satisfaction.",
+      "Appearance: Visual cues like color and form that shape initial perception."
+    ],
+    "imageUrl": "placeholder_attributes_visual"
+  },
+  {
+    "id": 12,
+    "type": "table",
+    "title": "Comparative Product Analysis",
+    "content": "This table provides a side-by-side comparison of key metrics across different product formulations.",
+    "tableData": {
+      "headers": [
+        "Metric",
+        "Product Alpha",
+        "Product Beta",
+        "Product Gamma"
+      ],
+      "rows": [
+        [
+          "Sweetness Score",
+          "7.5",
+          "6.8",
+          "8.1"
+        ],
+        [
+          "Crunchiness Index",
+          "8.2",
+          "7.1",
+          "7.9"
+        ],
+        [
+          "Overall Liking",
+          "88%",
+          "75%",
+          "92%"
+        ],
+        [
+          "Cost per Unit",
+          "$0.50",
+          "$0.45",
+          "$0.55"
+        ]
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "type": "word_cloud",
+    "title": "Real-Time Feedback Simulation",
+    "content": "Visualize emerging themes from consumer feedback. This dynamic word cloud highlights the most frequent descriptors, offering a quick pulse on consumer sentiment."
+  },
+  {
+    "id": 7,
+    "type": "predictive_tool",
+    "title": "Predictive Analytics for Consumer Preference",
+    "content": "Use our simple predictive model to estimate consumer acceptance based on key sensory inputs. Adjust parameters to see potential impact on preference scores."
+  },
+  {
+    "id": 10,
+    "type": "closing",
+    "title": "Ready to Transform Your Sensory Data?",
+    "content": "Let Aigora help you unlock the full potential of your sensory and consumer research.",
+    "callToAction": {
+      "text": "Unlock Results",
+      "url": "mailto:info@aigora.ai"
+    },
+    "contactInfo": {
+      "email": "info@aigora.ai"
+    }
+  },
+  {
+    "id": 11,
+    "type": "video",
+    "title": "Sample Video Embed",
+    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "caption": "This is an example of an HTML5 embedded video. Controls should be visible."
+  },
+  {
+    "id": 12,
+    "type": "iframe",
+    "title": "Live Web Content / App Demo",
+    "iframeUrl": "https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752342097%2C0.004017949104309083%2C51.4785698638049&layer=mapnik",
+    "description": "The content below is loaded from an external website via an iframe. This could be a live demo, a map, or any other web page."
+  }
+]
