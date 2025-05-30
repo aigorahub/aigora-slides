@@ -1,0 +1,783 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === CSS RESET (Minimal) === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Aigora BRAND CSS VARIABLES === */
+:root {
+  --color-core-black: #0A0A0A;
+  --color-dark-charcoal: #1E1E1E;
+  --color-graphite-gray: #414141;
+  --color-modern-slate: #2C2C2C;
+  --color-cool-gray: #9A9A9A;
+  --color-soft-fog: #EDEDED;
+  --color-modern-sage: #5FB96A;
+  --color-infra-lavender: #A986C4;
+  --color-signal-red: #DB2955;
+  --color-white: #FFFFFF;
+  --color-website-light-gray: #F5F6F7;
+
+  --font-header: 'Cormorant SC', serif;
+  --font-body: 'Roboto', sans-serif;
+  --font-meta: 'Roboto Condensed', sans-serif;
+
+  --transition-speed: 0.3s;
+
+  /* === SEMANTIC THEME VARIABLES (Light Mode Default) === */
+  --theme-bg-page: var(--color-website-light-gray);
+  --theme-text-primary: var(--color-dark-charcoal);
+  --theme-text-secondary: var(--color-cool-gray);
+  --theme-text-header: var(--color-core-black);
+  --theme-text-link: var(--color-modern-sage);
+  --theme-text-link-hover: var(--color-dark-charcoal);
+
+  --theme-bg-slide: var(--color-white);
+  --theme-shadow-slide: 0 0 0 1px rgba(0, 0, 0, 0.07), 0px 5px 15px rgba(0, 0, 0, 0.05), 0px 15px 35px rgba(0, 0, 0, 0.03);
+  --theme-border-slide-content: var(--color-soft-fog);
+  /* For things like predictive tool border */
+
+  --theme-bg-chevron: var(--color-modern-slate);
+  --theme-text-chevron: var(--color-white);
+  --theme-bg-chevron-hover: var(--color-core-black);
+  --theme-bg-chevron-active: var(--color-modern-sage);
+  --theme-shadow-chevron: 0 2px 5px rgba(0, 0, 0, 0.2);
+  --theme-shadow-chevron-hover: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  --theme-bg-button-primary: var(--color-modern-sage);
+  --theme-text-button-primary: var(--color-white);
+  --theme-bg-button-primary-hover: #4a9b55;
+  /* Darker sage */
+
+  --theme-range-track: var(--color-cool-gray);
+  --theme-range-thumb: var(--color-modern-sage);
+  --theme-range-thumb-border: var(--color-white);
+
+  --theme-placeholder-bg: var(--color-cool-gray);
+  /* For image/logo placeholders */
+  --theme-placeholder-border: var(--color-cool-gray);
+  --theme-placeholder-text: var(--color-graphite-gray);
+
+  --theme-list-item-bullet: var(--color-modern-sage);
+
+  --theme-wordcloud-container-border: var(--color-cool-gray);
+  --theme-wordcloud-container-bg: #f7f7f7;
+}
+
+body.dark-mode {
+  --theme-bg-page: var(--color-dark-charcoal);
+  --theme-text-primary: var(--color-soft-fog);
+  --theme-text-secondary: var(--color-graphite-gray);
+  --theme-text-header: var(--color-white);
+  --theme-text-link: var(--color-modern-sage);
+  --theme-text-link-hover: var(--color-infra-lavender);
+
+  --theme-bg-slide: var(--color-modern-slate);
+  --theme-shadow-slide: 0 0 0 1px rgba(255, 255, 255, 0.07), 0px 5px 15px rgba(0, 0, 0, 0.2), 0px 15px 35px rgba(0, 0, 0, 0.15);
+  --theme-border-slide-content: var(--color-graphite-gray);
+
+  --theme-bg-chevron: var(--color-graphite-gray);
+  --theme-text-chevron: var(--color-white);
+  --theme-bg-chevron-hover: var(--color-soft-fog);
+  /* --theme-bg-chevron-active: var(--color-modern-sage); /* Active can stay green */
+  --theme-shadow-chevron: 0 2px 5px rgba(0, 0, 0, 0.3);
+  --theme-shadow-chevron-hover: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+  --theme-bg-button-primary: var(--color-modern-sage);
+  --theme-text-button-primary: var(--color-white);
+  --theme-bg-button-primary-hover: #6ac774;
+  /* Lighter sage */
+
+  --theme-range-track: var(--color-graphite-gray);
+  --theme-range-thumb: var(--color-modern-sage);
+  --theme-range-thumb-border: var(--color-modern-slate);
+
+  --theme-placeholder-bg: var(--color-graphite-gray);
+  --theme-placeholder-border: var(--color-graphite-gray);
+  --theme-placeholder-text: var(--color-soft-fog);
+
+  --theme-list-item-bullet: var(--color-modern-sage);
+  /* Can stay same or change */
+
+  --theme-wordcloud-container-border: var(--color-graphite-gray);
+  --theme-wordcloud-container-bg: var(--color-dark-charcoal);
+}
+
+
+/* === GLOBAL STYLES === */
+body {
+  font-family: var(--font-body);
+  background-color: var(--theme-bg-page);
+  color: var(--theme-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* === TYPOGRAPHY === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+  font-weight: 600;
+  color: var(--theme-text-header);
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1.1rem;
+}
+
+ul,
+ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: var(--theme-text-link);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--theme-text-link-hover);
+  text-decoration: underline;
+}
+
+.text-meta {
+  font-family: var(--font-meta);
+  color: var(--theme-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* === SLIDE CONTAINER & SLIDES === */
+.slide-aspect-container {
+  width: 90vw;
+  max-width: calc(90vh * (16/9));
+  aspect-ratio: 16 / 9;
+  background-color: var(--theme-bg-slide);
+  border-radius: 10px;
+  box-shadow: var(--theme-shadow-slide);
+  /* overflow: hidden; */
+  display: flex;
+  position: relative;
+  margin: 0;
+  z-index: 1;
+  border: none;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7vh 7vw;
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: var(--theme-text-primary);
+  /* Default text color for slide content */
+}
+
+/* === NEW SIDE CHEVRON STYLES === */
+.side-chevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-dark-charcoal);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.side-chevron svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.side-chevron:hover {
+  background-color: var(--color-graphite-gray);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.chevron-active {
+  background-color: var(--color-modern-sage) !important;
+}
+
+.prev-chevron {
+  left: 1.2rem;
+}
+
+.next-chevron {
+  right: 1.2rem;
+}
+
+/* Media query to hide chevrons on smaller screens based on brief */
+@media (max-width: 699px) {
+  .side-chevron {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* === INTERACTIVE ELEMENTS === */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--theme-range-track) !important;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--theme-range-thumb);
+  border-radius: 50%;
+  border: 3px solid var(--theme-range-thumb-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: -8px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--theme-range-thumb);
+  border-radius: 50%;
+  border: 3px solid var(--theme-range-thumb-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.btn {
+  font-family: var(--font-body);
+  display: inline-block;
+  background-color: var(--theme-bg-button-primary);
+  color: var(--theme-text-button-primary);
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--theme-bg-button-primary-hover);
+  transform: translateY(-1px);
+  color: var(--theme-text-button-primary);
+  text-decoration: none;
+}
+
+/* ... existing .btn-secondary if any ... */
+
+/* === SLIDE SPECIFIC STYLES === */
+.slide .md\:w-1\/2.text-left p,
+.slide .md\:w-1\/2.text-left ul {
+  color: var(--theme-text-primary);
+  /* Ensure text in these sections adapts */
+}
+
+/* Ensure headers within slides use appropriate theme color if not already covered */
+.slide h1,
+.slide h2,
+.slide h3 {
+  color: var(--theme-text-header);
+}
+
+.slide p,
+.slide li {
+  color: var(--theme-text-primary);
+}
+
+/* Basic defaults for ALL images in a slide */
+.slide img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Good default for images */
+  /* No box-shadow or border-radius here by default */
+}
+
+/* Styles specifically for content images (NOT the logo) */
+.slide img:not([alt="Aigora mountain logo"]) {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  /* Default max height for content images */
+  margin-left: auto;
+  /* Center block images if they are narrower than container */
+  margin-right: auto;
+}
+
+/* The Aigora logo itself (img[alt="Aigora mountain logo"]) will now only be styled by its Tailwind classes 
+   and will not pick up the box-shadow or border-radius. */
+
+/* Styling for the placeholder DIVs like .bg-gray-200 (these are not img tags) */
+.slide [class*="bg-gray-200"][role="img"],
+.slide div[data-placeholder-image] {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-soft-fog);
+  /* Add other styles if these placeholder divs need them */
+}
+
+.slide [id^="predictiveToolContainer-"] {
+  background-color: var(--theme-bg-slide);
+  /* Should match slide bg or be distinct */
+  border: 1px solid var(--theme-border-slide-content);
+  /* Ensure label colors and other text also adapt if necessary */
+}
+
+.slide [id^="predictiveToolContainer-"] label {
+  color: var(--theme-text-secondary);
+}
+
+.slide [id^="predictiveToolContainer-"] span[id*="Value"] {
+  color: var(--theme-text-link);
+  /* Use link color for dynamic values */
+}
+
+.slide [id^="predictiveToolContainer-"] p {
+  color: var(--theme-text-primary);
+}
+
+.slide [id^="predictiveToolContainer-"] span[id*="Result"] {
+  color: var(--theme-text-header);
+  /* More prominent result */
+}
+
+
+
+.slide .mx-auto.h-16.md\:h-24.flex.items-center.justify-center {
+  color: var(--theme-placeholder-text);
+  border: 2px dashed var(--theme-placeholder-border);
+}
+
+/* === TAILWIND OVERRIDES === */
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+/* Main title on title slide specific styling */
+.slide>div>h1.text-5xl {
+  color: var(--theme-text-link);
+  /* Use link/brand color for emphasis */
+}
+
+/* Forcing Video Slide Title Size - REMOVED as Tailwind now handles this */
+.video-slide-title {
+  /* Intentionally left blank or with minimal non-sizing overrides if needed */
+  /* font-family: var(--font-header) !important; */
+  /* font-size: clamp(3.5rem, 8vw, 5.5rem) !important; */
+  /* Increased min, ideal, and max */
+  /* line-height: 1.1 !important; */
+  /* Slightly reduced for larger font */
+  /* color: var(--theme-text-header) !important; */
+  /* margin-bottom: 0.5em !important; */
+  /* Ensure some space */
+  /* text-align: center !important; */
+  /* Ensure it is centered */
+  /* width: 100% !important; */
+  /* Ensure it takes full width if that's an issue */
+}
+
+.slide>div>p.text-2xl {
+  color: var(--theme-text-secondary);
+}
+
+/* CTA on closing slide */
+a.inline-block.bg-aigora-sg-green {
+  background-color: var(--theme-bg-button-primary) !important;
+  color: var(--theme-text-button-primary) !important;
+  /* ... other existing styles ... */
+}
+
+a.inline-block.bg-aigora-sg-green:hover {
+  background-color: var(--theme-bg-button-primary-hover) !important;
+}
+
+/* === TITLE SLIDE SPECIFIC STYLING === */
+.title-slide-content {
+  /* This class was added to the div wrapping title slide elements in slide.njk */
+  /* It can be used if further specific containment or flex properties are needed for title slide only */
+}
+
+.logo {
+  /* Tailwind: max-h-[12vh] w-auto mb-6 */
+  /* max-height: 12vh; Ensures logo height is ~12% of slide height */
+  /* margin-bottom will be controlled by a general rule for vertical spacing */
+}
+
+.headline {
+  /* Tailwind: font-header font-semibold text-core-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 */
+  font-family: var(--font-header);
+  font-weight: 600;
+  /* Semibold for Cormorant SC */
+  color: var(--color-core-black);
+  font-size: calc(0.10 * clamp(400px, 90vh, 1080px));
+  /* ~10-12% of slide height, clamped */
+  line-height: 1.1;
+  /* Adjusted from leading-tight for better control */
+  letter-spacing: normal;
+  /* Override any other letter-spacing for Cormorant SC headline */
+}
+
+.subtitle {
+  /* Tailwind: font-body text-dark-charcoal text-xl md:text-2xl lg:text-3xl max-w-xl mb-6 */
+  font-family: var(--font-body);
+  color: var(--color-dark-charcoal);
+  font-weight: 400;
+  /* Roboto Regular */
+  /* font-size dynamically set relative to headline */
+  line-height: 1.4;
+  max-width: 70ch;
+  /* Max 70 characters (approx) */
+}
+
+.meta {
+  /* Tailwind: font-body text-dark-charcoal text-base md:text-lg */
+  font-family: var(--font-body);
+  /* Brief says Roboto for meta too */
+  color: var(--color-dark-charcoal);
+  font-weight: 400;
+  /* Roboto Regular */
+  /* font-size dynamically set relative to subtitle */
+  line-height: 1.3;
+}
+
+.meta a {
+  color: var(--color-modern-sage);
+  /* Use brand green for link color */
+  text-decoration: underline;
+  /* Always underline for clear hyperlink affordance */
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.meta a:hover {
+  color: var(--color-core-black);
+  /* Darken on hover for light mode */
+  text-decoration-color: var(--color-core-black);
+}
+
+body.dark-mode .meta a {
+  color: var(--color-modern-sage);
+  /* Keep brand green for link in dark mode */
+}
+
+body.dark-mode .meta a:hover {
+  color: var(--color-infra-lavender);
+  /* Brighter hover for dark mode */
+  text-decoration-color: var(--color-infra-lavender);
+}
+
+.meta .text-modern-sage {
+  /* The separator dot */
+  color: var(--color-modern-sage);
+}
+
+/* Vertical spacing rhythm for title slide elements */
+.title-slide-content>.logo,
+.title-slide-content>.headline,
+.title-slide-content>.subtitle {
+  margin-bottom: 3vh;
+  /* Equal vertical gaps, ~3% of viewport height */
+}
+
+.title-slide-content>.meta {
+  margin-bottom: 0;
+  /* No margin below the last element */
+  margin-top: 3vh;
+  /* Ensure it also has the same gap from subtitle */
+}
+
+/* === SLIDE SPECIFIC STYLES === */
+/* Reset forced list style from previous attempt if it caused issues */
+/* .slide .prose ul > li::before { ... } */
+
+/* For "Why Sensory Data Matters" slide specifically, if it uses a unique class or ID, 
+   or we rely on the default prose styling. Assuming Tailwind prose should work. 
+   If bullets are still an issue, we need to check the Nunjucks template for how `slide.items` is rendered 
+   and ensure it's a standard <ul> structure that prose can target effectively. 
+   The prose classes were added to `ul` tag directly in `slide.njk` which is correct. */
+
+.slide .md\:w-1\/2.text-left p,
+.slide .md\:w-1\/2.text-left ul {
+  color: var(--theme-text-primary);
+  /* Ensure text in these sections adapts */
+}
+
+/* Targeting lists within the typical two-column text layout more specifically */
+.slide div[class*="md:w-1/2"] .prose ul,
+.slide div[class*="md:w-1/2"] .prose ol {
+  padding-left: 1.5em;
+  /* Default indent */
+}
+
+.slide div[class*="md:w-1/2"] .prose ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5em;
+}
+
+.slide div[class*="md:w-1/2"] .prose ul li::before {
+  content: "";
+  /* Remove any ::before content that might interfere */
+  display: none;
+  /* Hide pseudo-elements if they are causing issues */
+}
+
+.slide div[class*="md:w-1/2"] .prose ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.5em;
+}
+
+/* Styling for the link on the closing slide */
+.slide[id^="slide-closing"] div[class*="text-lg"] a,
+.slide[id*="-closing"] div[class*="text-lg"] a {
+  /* Fallback for different id patterns if any */
+  color: var(--color-modern-sage);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.slide[id^="slide-closing"] div[class*="text-lg"] a:hover,
+.slide[id*="-closing"] div[class*="text-lg"] a:hover {
+  color: var(--color-core-black);
+  text-decoration-color: var(--color-core-black);
+}
+
+body.dark-mode .slide[id^="slide-closing"] div[class*="text-lg"] a,
+body.dark-mode .slide[id*="-closing"] div[class*="text-lg"] a {
+  color: var(--color-modern-sage);
+}
+
+body.dark-mode .slide[id^="slide-closing"] div[class*="text-lg"] a:hover,
+body.dark-mode .slide[id*="-closing"] div[class*="text-lg"] a:hover {
+  color: var(--color-infra-lavender);
+  text-decoration-color: var(--color-infra-lavender);
+}
+
+/* === INTERACTIVE TABLE - ENHANCED STYLES === */
+.interactive-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ---- ULTRA-SIMPLE & SPECIFIC TABLE HEADER ---- */
+/* Light Mode Header Row Background */
+table.interactive-table>thead>tr {
+  background-color: var(--color-sgBlue) !important;
+}
+
+/* Dark Mode Header Row Background */
+body.dark-mode table.interactive-table>thead>tr {
+  background-color: var(--color-darkBlue) !important;
+}
+
+/* All Header Cells (th) */
+table.interactive-table>thead>tr>th.sortable-header {
+  padding: 1rem 1.25rem !important;
+  font-family: var(--font-header) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  color: var(--color-white) !important;
+  text-align: center !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  position: relative !important;
+  /* For sort indicator, ensure it applies */
+  user-select: none !important;
+  border-bottom: none !important;
+  /* Remove any previous border for active sort */
+  transition: background-color 0.2s ease !important;
+  /* Keep transition */
+}
+
+/* Header Cell Hover - Light Mode */
+table.interactive-table>thead>tr>th.sortable-header:hover {
+  background-color: var(--color-darkBlue) !important;
+}
+
+/* Header Cell Hover - Dark Mode */
+body.dark-mode table.interactive-table>thead>tr>th.sortable-header:hover {
+  background-color: var(--color-sgBlue) !important;
+}
+
+/* Sort Indicator Styling (remains fairly simple) */
+.interactive-table th.sortable-header .sort-indicator {
+  font-size: 0.85em;
+  margin-left: 0.5em;
+  display: inline-block;
+  width: 1em;
+  text-align: left;
+  color: var(--color-soft-fog);
+  /* This should be visible on blue bg */
+}
+
+/* ---- END ULTRA-SIMPLE TABLE HEADER ---- */
+
+/* Table Body & Row Styling */
+.interactive-table tbody tr {
+  border-bottom: 1px solid var(--theme-border-slide-content);
+  transition: background-color 0.15s ease;
+}
+
+.interactive-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Colorful Rows - Cycle 1 */
+.interactive-table tbody tr:nth-child(3n+1) {
+  background-color: transparent;
+  /* Shows slide background */
+}
+
+body.dark-mode .interactive-table tbody tr:nth-child(3n+1) {
+  background-color: transparent;
+}
+
+/* Colorful Rows - Cycle 2 */
+.interactive-table tbody tr:nth-child(3n+2) {
+  background-color: rgba(0, 102, 255, 0.05);
+  /* Very subtle Aigora blue tint */
+}
+
+body.dark-mode .interactive-table tbody tr:nth-child(3n+2) {
+  background-color: rgba(0, 102, 255, 0.1);
+  /* Slightly more visible blue tint for dark mode */
+}
+
+/* Colorful Rows - Cycle 3 */
+.interactive-table tbody tr:nth-child(3n+3) {
+  background-color: var(--color-soft-fog);
+  /* Existing light grey */
+}
+
+body.dark-mode .interactive-table tbody tr:nth-child(3n+3) {
+  background-color: var(--color-modern-slate);
+  /* Existing darker grey for dark mode */
+}
+
+/* Hover effect for rows - ensure it overrides cycle colors */
+.interactive-table tbody tr:hover {
+  background-color: var(--color-infra-lavender) !important;
+  color: var(--color-core-black) !important;
+}
+
+.interactive-table tbody tr:hover td,
+/* Ensure text color in all cells of hovered row changes */
+.interactive-table tbody tr:hover td:first-child {
+  color: var(--color-core-black) !important;
+}
+
+body.dark-mode .interactive-table tbody tr:hover {
+  background-color: var(--color-graphite-gray) !important;
+}
+
+body.dark-mode .interactive-table tbody tr:hover td,
+body.dark-mode .interactive-table tbody tr:hover td:first-child {
+  color: var(--color-white) !important;
+}
+
+/* Cell Styling */
+.interactive-table td {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--theme-text-primary);
+  vertical-align: middle;
+  text-align: left;
+}
+
+.interactive-table td:first-child {
+  font-weight: 500;
+  color: var(--theme-text-header);
+}
+
+/* Dark mode text color for table data cells (already handled by theme-text-primary) */
+/* body.dark-mode .interactive-table td {
+  color: var(--theme-text-primary);
+} */
+
+/* Text alignment for numeric columns - assuming second column onwards are numeric/data */
+/* .interactive-table td:not(:first-child) {
+  text-align: right;
+} */
+/* .interactive-table th:not(:first-child) {
+  text-align: right; 
+} */

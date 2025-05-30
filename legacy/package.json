@@ -1,0 +1,31 @@
+{
+  "name": "eleventy-presentation-aigora",
+  "version": "1.0.0",
+  "description": "Eleventy-based interactive presentation for Aigora on Sensory Data.",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
+    "chart.js": "^4.4.2",
+    "gsap": "^3.12.5",
+    "markdown-it": "^14.0.0",
+    "wordcloud": "^1.2.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "keywords": [
+    "eleventy",
+    "presentation",
+    "sensory data",
+    "aigora"
+  ],
+  "author": "Aigora (via AI)",
+  "license": "ISC",
+  "repository": {
+    "type": "git"
+  },
+  "main": ".eleventy.js"
+}

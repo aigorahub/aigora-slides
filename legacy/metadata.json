@@ -1,0 +1,8 @@
+{
+  "name": "Sensory Data Presentation App (Eleventy)",
+  "description": "An Eleventy-based presentation app showcasing how sensory data drives product innovation, demonstrating the power of custom web applications. Features interactive charts, real-time feedback simulations, and predictive analytics, all built with web standards for optimal performance and accessibility.",
+  "companyName": "Aigora",
+  "websiteUrl": "https://www.aigora.ai",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
