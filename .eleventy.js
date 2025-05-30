@@ -30,7 +30,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("public");
     eleventyConfig.addPassthroughCopy("assets"); // Keep original assets passthrough if needed
 
-    // No need to copy reveal.js assets locally; using CDN links in layout
 
     // Watch our main CSS file for changes
     eleventyConfig.addWatchTarget("src/css/style.css");
