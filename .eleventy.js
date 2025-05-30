@@ -11,21 +11,18 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.setLibrary("md", md);
 
-    // Custom filter to split slides by horizontal rules
+    // Custom filter to split content into slides and wrap them for Reveal.js Markdown
     eleventyConfig.addFilter("slides", function (content) {
-        // Split by horizontal rules (---) and wrap each in section tags
-        const slides = content.split(/\n---\n/);
-        return slides.map(slide => {
-            // Check for vertical slides (separated by --)
-            if (slide.includes('\n--\n')) {
-                const verticalSlides = slide.split(/\n--\n/);
-                return '<section>' +
-                    verticalSlides.map(vSlide =>
-                        `<section data-markdown><textarea data-template>${vSlide.trim()}</textarea></section>`
-                    ).join('\n') +
-                    '</section>';
-            }
-            return `<section data-markdown><textarea data-template>${slide.trim()}</textarea></section>`;
+        // Trim leading/trailing whitespace from the whole content first
+        const trimmedContent = content.trim();
+
+        // Split by horizontal rule (---) on its own line
+        const slides = trimmedContent.split(/\n---\n/);
+
+        return slides.map(slideContent => {
+            // Each slide chunk is wrapped for Reveal.js Markdown plugin
+            // HTML comments like <!-- .slide: class="center" --> should be processed by Reveal.js
+            return `<section data-markdown><textarea data-template>${slideContent.trim()}</textarea></section>`;
         }).join('\n');
     });
 
@@ -33,11 +30,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("public");
     eleventyConfig.addPassthroughCopy("assets"); // Keep original assets passthrough if needed
 
-    // Copy reveal.js assets from node_modules
-    eleventyConfig.addPassthroughCopy({
-        "node_modules/reveal.js/dist": "assets/reveal.js/dist",
-        "node_modules/reveal.js/plugin": "assets/reveal.js/plugin"
-    });
+    // No need to copy reveal.js assets locally; using CDN links in layout
 
     // Watch our main CSS file for changes
     eleventyConfig.addWatchTarget("src/css/style.css");
