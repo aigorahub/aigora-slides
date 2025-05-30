@@ -1,0 +1,17 @@
+---
+layout: reveal-layout.njk
+title: "Sample Aigora Presentation"
+eleventyNavigation:
+  key: Sample Aigora Deck
+  order: 2 # Or an appropriate order
+---
+{# This presentation uses data from sample_presentation_deck.json #}
+<script>
+  window.slidesData = {{ sample_presentation_deck.slides | dump | safe }};
+</script>
+
+{% for slide in sample_presentation_deck.slides %}
+<section>
+  {% include "legacy_slide_types.njk" %}
+</section>
+{% endfor %}
