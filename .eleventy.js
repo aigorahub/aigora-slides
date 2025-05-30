@@ -1,0 +1,1 @@
+const markdownIt = require('markdown-it'); const md = new markdownIt(); module.exports = function(eleventyConfig) { eleventyConfig.addPassthroughCopy('assets'); eleventyConfig.setLibrary('md', md); return { dir: { input: '.', includes: '_includes', output: 'dist' } }; };
