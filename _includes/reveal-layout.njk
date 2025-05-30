@@ -20,6 +20,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* Move Reveal.js progress bar to the top */
+        .reveal .progress {
+            top: 0;
+            bottom: auto;
+            height: 5px; /* Adjust height as needed */
+        }
+        /* Ensure controls are visually above content if needed, though top-right usually handles this */
+        .reveal .controls {
+            z-index: 30; /* Default is 30, ensure it's high enough */
+        }
+    </style>
 </head>
 <body>
     <!-- Theme Toggle Button -->
@@ -73,6 +85,7 @@
         Reveal.initialize({
             hash: true,
             controls: true,
+            controlsLayout: 'top-right',
             progress: true,
             center: true,
             touch: true,
